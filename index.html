@@ -66,6 +66,21 @@
     overflow: hidden;
   }
 
+  /* Desktop / tablet: read as a centered document card, not a stretched mobile column */
+  @media (min-width: 640px) {
+    body { padding: 40px 20px; align-items: flex-start; }
+    .stage {
+      max-width: 620px;
+      min-height: auto;
+      border-radius: 14px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.65), 0 0 0 1px rgba(201,162,39,0.14);
+    }
+  }
+  @media (min-width: 1024px) {
+    .stage { max-width: 700px; }
+    .content { padding-left: 34px; padding-right: 34px; }
+  }
+
   /* ---------- Letterhead ---------- */
   .letterhead {
     display: flex;
@@ -352,7 +367,7 @@
   .puzzle-image-slot {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    min-height: 140px;
     border-radius: var(--radius);
     overflow: hidden;
     margin: 16px 0 6px;
@@ -360,10 +375,11 @@
     border: 1px dashed rgba(201,162,39,0.35);
   }
   .puzzle-image-slot img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     display: block;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
   }
   .puzzle-image-fallback {
     position: absolute;
@@ -989,7 +1005,7 @@
   // Atenção: esse ID fica visível no código-fonte da página para qualquer
   // pessoa que abrir o site. Isso é aceitável para uma lista de nomes de
   // brincadeira, mas não guarde nada sensível nesse bucket.
-  const KVDB_BUCKET_ID = 'COLE_SEU_BUCKET_ID_AQUI';
+  const KVDB_BUCKET_ID = 'EQaNeY9AgUgxHrRP6pn1CU';
   const KVDB_BASE = 'https://kvdb.io/' + KVDB_BUCKET_ID + '/registro-presenca';
   const DEFAULT_REGISTRY = ['Lucas Freitas'];
   const kvdbConfigured = KVDB_BUCKET_ID !== 'COLE_SEU_BUCKET_ID_AQUI';
