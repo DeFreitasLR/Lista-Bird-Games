@@ -1198,9 +1198,9 @@
       registry = DEFAULT_REGISTRY.concat([name]);
     }
 
-    list.innerHTML = registry.map(function(n){
+    list.innerHTML = registry.map(function(n, i){
       const isYou = n === name;
-      return '<div class="registry-row'+(isYou?' you':'')+'"><span>'+escapeHtml(n)+'</span>'+(isYou ? '<span>· você</span>' : '')+'</div>';
+      return '<div class="registry-row'+(isYou?' you':'')+'"><span>'+(i+1)+'. '+escapeHtml(n)+'</span>'+(isYou ? '<span>· você</span>' : '')+'</div>';
     }).join('');
 
     document.getElementById('monitoredLine').style.display = state.t2Monitored ? 'block' : 'none';
@@ -1229,8 +1229,8 @@
         list.innerHTML = '<div class="registry-row"><span>Nenhum registro encontrado ainda.</span></div>';
         return;
       }
-      list.innerHTML = registry.map(function(n){
-        return '<div class="registry-row"><span>'+escapeHtml(n)+'</span></div>';
+      list.innerHTML = registry.map(function(n, i){
+        return '<div class="registry-row"><span>'+(i+1)+'. '+escapeHtml(n)+'</span></div>';
       }).join('');
     } catch (e) {
       console.error('[registro] erro ao carregar lista:', e);
